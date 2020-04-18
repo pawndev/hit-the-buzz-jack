@@ -1,0 +1,31 @@
+{
+  "defaultSeverity": "error",
+  "extends": [
+    "tslint:recommended",
+    "tslint-config-airbnb",
+    "tslint-config-prettier",
+    "tslint-plugin-prettier"
+  ],
+  "rules": {
+    "arrow-parens": [true, "ban-single-arg-parens"],
+    "max-classes-per-file": false,
+    "no-use-before-declare": false,
+    "object-literal-sort-keys": [false, "shorthand-first"],
+    "no-namespace": false,
+    "variable-name": {"options": ["allow-leading-underscore"]},
+    "semicolon": false,
+    "trailing-comma": true,
+    "quotemark": [true, "single"],
+    "max-line-length": [true, 160],
+    "prettier": [
+      true,
+      {
+        "arrowParens": "avoid",
+        "semi": true,
+        "trailingComma": "all",
+        "singleQuote": true,
+        "printWidth": 160
+      }
+    ]
+  }
+}

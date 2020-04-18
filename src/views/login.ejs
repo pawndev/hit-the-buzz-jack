@@ -1,0 +1,57 @@
+<!doctype html>
+<html lang="fr" >
+<head>
+    <meta charset="utf-8">
+    <title><%= config.title %></title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="/css/uikit.min.css">
+    <script src="/js/uikit.min.js"></script>
+    <script src="/js/uikit-icons.min.js"></script>
+    <style>
+        h1 { color: #d54d7b; font-family: "Great Vibes", cursive; font-size: 165px; line-height: 160px; font-weight: normal; margin-bottom: 0px; margin-top: 40px; text-align: center; text-shadow: 0 1px 1px #fff; }
+        .pointer { cursor: pointer }
+    </style>
+</head>
+
+<body>
+<div class="uk-container uk-container-center uk-margin-top uk-margin-large-bottom">
+    <h1 class="uk-article-title uk-text-center"><%= config.title %></h1>
+    <hr class="uk-divider-icon">
+    <div class="uk-flex" data-uk-grid-margin="">
+        <div class="uk-margin uk-width-large uk-margin-auto uk-card uk-card-default uk-card-body uk-box-shadow-large">
+            <h3 class="uk-card-title uk-text-center">Let's buzz!</h3>
+            <form>
+                <div class="uk-margin">
+                    <div class="uk-inline uk-width-1-1">
+                        <span class="uk-form-icon" uk-icon="icon: mail"></span>
+                        <input class="uk-input uk-form-large" placeholder="Your name" type="text">
+                    </div>
+                </div>
+                <div class="uk-margin">
+                    <div class="uk-inline uk-width-1-1">
+                        <label>Join a team!</label>
+                        <select class="uk-select">
+                            <option></option>
+                            <option value="AlphaTeam">AlphaTeam</option>
+                            <option value="BetaTeam">BetaTeam</option>
+                        </select>
+                    </div>
+                    <hr class="uk-divider-small uk-text-center">
+                    <div class="uk-margin">
+                        <div class="uk-inline uk-width-1-1">
+                            <label>Or create one!</label>
+                            <input class="uk-input uk-form-large" placeholder="Your team name" type="text">
+                        </div>
+                    </div>
+                </div>
+                <div class="uk-margin">
+                    <button class="uk-button uk-button-primary uk-button-large uk-width-1-1">Login</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+</body>
+
+</html>

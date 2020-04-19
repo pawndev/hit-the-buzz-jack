@@ -19,44 +19,37 @@
         <h1 class="uk-article-title uk-text-center"><%= config.title %></h1>
         <hr class="uk-divider-icon">
         <div class="uk-flex" data-uk-grid-margin="">
-            <div class="uk-margin-medium-right uk-width-medium-1-4 uk-row-first uk-box-shadow-medium">
+            <div id="buzz" class="uk-margin-medium-right uk-width-medium-1-4 uk-row-first uk-box-shadow-medium">
                 <h2 class="uk-article-title uk-text-center">Listes des buzz</h2>
                 <hr class="uk-text-center uk-divider-small">
-                <button class="uk-width-1-1 uk-button uk-button-danger">Clear Buzzes</button>
-                <ul class="uk-list uk-list-striped">
-                    <li>Ju'</li>
-                    <li>ber'</li>
-                    <li>Myr</li>
-                    <li>Vinc'</li>
-                    <li>Vinc'</li>
-                    <li>Vinc'</li>
+                <button id="clear_buzz" class="uk-width-1-1 uk-button uk-button-danger">Clear Buzzes</button>
+                <ul id="buzz_list" class="uk-list uk-list-striped">
+                    <% data.buzzes.forEach(function(user){ %>
+                    <li>[<%= user.team %>] <%= user.name %></li>
+                    <% }); %>
                 </ul>
             </div>
-            <div class="uk-width-medium-2-4 uk-row-first uk-box-shadow-medium">
+            <div id="teams" class="uk-width-medium-2-4 uk-row-first uk-box-shadow-medium">
                 <h2 class="uk-article-title uk-text-center">Listes des Équipes</h2>
                 <hr class="uk-text-center uk-divider-small">
-                <div class="team_list">
+                <div id="team_list">
+                    <% data.teams.sort((prev, curr) => curr.point - prev.point).forEach(function(team){ %>
                     <div class="uk-card uk-card-small uk-card-default uk-box-shadow-large">
-                        <h3 class="uk-card-title uk-text-center@s">TeamName1</h3>
+                        <h3 class="uk-card-title uk-text-center@s"><%= team.name %></h3>
                         <ul class="uk-list uk-list-striped">
-                            <li>Ju'</li>
-                            <li>Vinc'</li>
+                            <% team.members.forEach(function(user){ %>
+                            <li><%= user.name %></li>
+                            <% }) %>
                         </ul>
                     </div>
-                    <div class="uk-card uk-card-small uk-card-default uk-box-shadow-large">
-                        <h3 class="uk-card-title uk-text-center@s">TeamName2</h3>
-                        <ul class="uk-list uk-list-striped">
-                            <li>Ber'</li>
-                            <li>Myr'</li>
-                        </ul>
-                    </div>
+                    <% })%>
                 </div>
             </div>
-            <div class="uk-margin-medium-left uk-width-medium-1-4 uk-box-shadow-medium">
+            <div id="score" class="uk-margin-medium-left uk-width-medium-1-4 uk-box-shadow-medium">
                 <h2 class="uk-article-title uk-text-center">Scores</h2>
                 <hr class="uk-text-center uk-divider-small">
                 <div class="uk-panel uk-panel-box uk-box-shadow-medium">
-                    <table class="uk-table uk-table-divider">
+                    <table id="score_list" class="uk-table uk-table-divider">
                         <thead>
                         <tr>
                             <th>Team</th>
@@ -65,22 +58,29 @@
                         </tr>
                         </thead>
                         <tbody>
-                        <tr>
-                            <td>TeamName1</td>
-                            <td>12</td>
-                            <td><span class="pointer" uk-icon="minus"></span>&nbsp;&nbsp;&nbsp;&nbsp;<span class="pointer" uk-icon="plus"></span></td>
+                        <% data.teams.sort((prev, curr) => curr.point - prev.point).forEach(function(team){ %>
+                        <tr id="<%= team.name %>">
+                            <td><%= team.name %></td>
+                            <td><%= team.point %></td>
+                            <td>
+                                <span class="pointer dec_point" uk-icon="minus"></span>
+                                &nbsp;&nbsp;&nbsp;&nbsp;
+                                <span class="pointer inc_point" uk-icon="plus"></span>
+                            </td>
                         </tr>
-                        <tr>
-                            <td>TeamName2</td>
-                            <td>10</td>
-                            <td><span class="pointer" uk-icon="minus"></span>&nbsp;&nbsp;&nbsp;&nbsp;<span class="pointer" uk-icon="plus"></span></td>
-                        </tr>
+                        <% }); %>
                         </tbody>
                     </table>
                 </div>
             </div>
         </div>
     </div>
+    <script src="/socket.io/socket.io.js"></script>
+    <script src="/common/event.js"></script>
+    <script src="/host/buzz.js"></script>
+    <script src="/host/team.js"></script>
+    <script src="/host/score.js"></script>
+    <script src="/host/index.js"></script>
 </body>
 
 </html>

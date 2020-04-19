@@ -8,8 +8,8 @@
 delete old
 - [ ] remove all old assets
 - [ ] use cdn for uikit
-- [ ] remove all old pages
-- [ ] clean routes
+- [x] remove all old pages
+- [x] clean routes
 - [ ] refactor the player part (like in the host part)
 - [ ] try to separate all event listener in the backend
 

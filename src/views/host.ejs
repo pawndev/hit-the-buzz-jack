@@ -1,66 +1,86 @@
-<!DOCTYPE html>
-<html>
-    <head>
-        <meta charset="utf-8">
-        <title><%= config.title %></title>
-        <meta name="author" content="Pawndev">
-        <meta name="description" content="Let's buzz-in!">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
+<!doctype html>
+<html lang="fr" >
+<head>
+    <meta charset="utf-8">
+    <title><%= config.title %></title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="/css/uikit.min.css">
+    <script src="/js/uikit.min.js"></script>
+    <script src="/js/uikit-icons.min.js"></script>
+    <style>
+        h1 { color: #d54d7b; font-family: "Great Vibes", cursive; font-size: 165px; line-height: 160px; font-weight: normal; margin-bottom: 0px; margin-top: 40px; text-align: center; text-shadow: 0 1px 1px #fff; }
+        .pointer { cursor: pointer }
+    </style>
+</head>
 
-        <link href="https://fonts.googleapis.com/css?family=Poppins:500,700|Roboto:400,500,700,900" rel="stylesheet">
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tailwindcss/1.2.0/base.min.css" integrity="sha256-q1waS+j3XzbPuDsYvSCg0gJSqMyWeEyFHQFWf9/BCPc=" crossorigin="anonymous" />
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tailwindcss/1.2.0/components.min.css" integrity="sha256-LSQP3MbpDJypSUMHv6f7Zsdgd70/9jgNlSp+azQRdmg=" crossorigin="anonymous" />
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tailwindcss/1.2.0/tailwind.min.css" integrity="sha256-ct5KWWMn5eSjQCQkdJrskmSppUJDoXwUlBQXCZcISPk=" crossorigin="anonymous" />
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tailwindcss/1.2.0/utilities.min.css" integrity="sha256-XlXoswytjU+FTsX57ERhhVAuqP0bDldHO/4KHdOqorw=" crossorigin="anonymous" />
-        <link href="/style.css" rel="stylesheet">
-    </head>
-    <body>
-        <header>
-            <h2 class="js-active"><%= data.users.length %> joined</h2>
-            <img class="logo" alt="Buzzer logo" src="/buzzer-logo.svg" />
-        </header>
-        <ul class="flex border-b">
-            <li class="tab mr-1" id="game_tab">
-                <a class="bg-white inline-block border-l border-t border-r rounded-t py-2 px-4 text-blue-700 font-semibold" href="#">Game</a>
-            </li>
-            <li class="tab mr-1" id="users_tab">
-                <a class="bg-white inline-block py-2 px-4 text-blue-500 hover:text-blue-800 font-semibold" href="#">Users</a>
-            </li>
-            <li class="tab mr-1" id="teams_tab">
-                <a class="bg-white inline-block py-2 px-4 text-blue-500 hover:text-blue-800 font-semibold" href="#">Team</a>
-            </li>
-        </ul>
-        <div class="container">
-            <div id="game" class="content">
-                <ol class="js-buzzes">
-                    <% data.buzzes.map(buzz => `<li>${buzz.name} on team ${buzz.team}</li>`) %>
-                </ol>
-                <button class="js-clear">Clear buzzes</button>
+<body>
+    <div class="uk-container uk-container-center uk-margin-top uk-margin-large-bottom">
+        <h1 class="uk-article-title uk-text-center"><%= config.title %></h1>
+        <hr class="uk-divider-icon">
+        <div class="uk-flex" data-uk-grid-margin="">
+            <div id="buzz" class="uk-margin-medium-right uk-width-medium-1-4 uk-row-first uk-box-shadow-medium">
+                <h2 class="uk-article-title uk-text-center">Listes des buzz</h2>
+                <hr class="uk-text-center uk-divider-small">
+                <button id="clear_buzz" class="uk-width-1-1 uk-button uk-button-danger">Clear Buzzes</button>
+                <ul id="buzz_list" class="uk-list uk-list-striped">
+                    <% data.buzzes.forEach(function(user){ %>
+                    <li>[<%= user.team %>] <%= user.name %></li>
+                    <% }); %>
+                </ul>
             </div>
-            <div id="users" class="content hidden">
-                <ol class="js-users">
-                    <% data.users.forEach(function(user){ %>
-                        <li>[<%= user.team %>] <%= user.name %></li>
-                    <% })%>
-                </ol>
-            </div>
-            <div id="teams" class="content hidden">
-                <div class="js-teams">
-                    <% data.teams.forEach(function(team){ %>
-                        <div class="card card-1">
-                            <h3 class="team_name">Equipe: <%= team.name%></h3>
-                            <h4 class="team_point">Point: <%= team.point%> <span>+</span></h4>
-                            <ul>
-                                <% team.members.forEach(function(user){ %>
-                                    <li><%= user.name %></li>
-                                <% })%>
-                            </ul>
-                        </div>
+            <div id="teams" class="uk-width-medium-2-4 uk-row-first uk-box-shadow-medium">
+                <h2 class="uk-article-title uk-text-center">Listes des Équipes</h2>
+                <hr class="uk-text-center uk-divider-small">
+                <div id="team_list">
+                    <% data.teams.sort((prev, curr) => curr.point - prev.point).forEach(function(team){ %>
+                    <div class="uk-card uk-card-small uk-card-default uk-box-shadow-large">
+                        <h3 class="uk-card-title uk-text-center@s"><%= team.name %></h3>
+                        <ul class="uk-list uk-list-striped">
+                            <% team.members.forEach(function(user){ %>
+                            <li><%= user.name %></li>
+                            <% }) %>
+                        </ul>
+                    </div>
                     <% })%>
                 </div>
             </div>
+            <div id="score" class="uk-margin-medium-left uk-width-medium-1-4 uk-box-shadow-medium">
+                <h2 class="uk-article-title uk-text-center">Scores</h2>
+                <hr class="uk-text-center uk-divider-small">
+                <div class="uk-panel uk-panel-box uk-box-shadow-medium">
+                    <table id="score_list" class="uk-table uk-table-divider">
+                        <thead>
+                        <tr>
+                            <th>Team</th>
+                            <th>Score</th>
+                            <th>Action</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <% data.teams.sort((prev, curr) => curr.point - prev.point).forEach(function(team){ %>
+                        <tr id="<%= team.name %>">
+                            <td><%= team.name %></td>
+                            <td><%= team.point %></td>
+                            <td>
+                                <span class="pointer dec_point" uk-icon="minus"></span>
+                                &nbsp;&nbsp;&nbsp;&nbsp;
+                                <span class="pointer inc_point" uk-icon="plus"></span>
+                            </td>
+                        </tr>
+                        <% }); %>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
         </div>
-        <script src="/socket.io/socket.io.js"></script>
-        <script src="/host.js"></script>
-    </body>
+    </div>
+    <script src="/socket.io/socket.io.js"></script>
+    <script src="/common/event.js"></script>
+    <script src="/host/buzz.js"></script>
+    <script src="/host/team.js"></script>
+    <script src="/host/score.js"></script>
+    <script src="/host/index.js"></script>
+</body>
+
 </html>

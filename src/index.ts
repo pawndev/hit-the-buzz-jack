@@ -26,37 +26,6 @@ server.register(fastifyStatic, {
   root: path.join(__dirname, '..', 'public'),
 });
 
-// io.on(IoEvent.CONNECTION, (socket: Socket) => {
-//   socket.on(IoEvent.PLAYER.NEW, (user: { id: string; name: string; team: string; }) => {
-//     const u = new User(user.id, user.name)
-//     data.addUser(u, user.team);
-//     io.emit(IoEvent.PLAYER.CHANGE, data.getData());
-//     logger.info(`New user ${user.name} joined the game!`);
-//   });
-//
-//   socket.on(IoEvent.BUZZ.NEW, (user: { id: string; name: string; team: string }) => {
-//     data.buzzes.add(`${user.name}-${user.team}`);
-//     io.emit(IoEvent.BUZZES, data.getBuzzes());
-//     logger.info(`${user.name} buzzed in!`);
-//   });
-//
-//   socket.on(IoEvent.SCORE.INC, ({ team }: { team: string; }) => {
-//     data.incrementPoint(team);
-//     io.emit(IoEvent.SCORE.CHANGE, data.getData());
-//   })
-//
-//   socket.on(IoEvent.SCORE.DEC, ({ team }: { team: string; }) => {
-//     data.decrementPoint(team);
-//     io.emit(IoEvent.SCORE.CHANGE, data.getData());
-//   })
-//
-//   socket.on(IoEvent.BUZZ.CLEAR, () => {
-//     data.resetBuzzes();
-//     io.emit('buzzes', data.getBuzzes());
-//     logger.info('Clear buzzes');
-//   });
-// });
-
 io.on(IoEvent.CONNECTION, (socket: Socket) => {
   // On player join the game
   socket.on(IoEvent.PLAYER.NEW, (user: { id: string; name: string; team: string; }) => {

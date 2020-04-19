@@ -1,4 +1,4 @@
-# buzzer online with friends !
+# Hit the buzz, Jack
 
 This project was initially a fork of https://github.com/bufferapp/buzzer
 

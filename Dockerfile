@@ -5,6 +5,7 @@ WORKDIR /usr/src/app
 
 ENV NODE_ENV production
 ENV PORT 8090
+ENV APPLICATION_TITLE "Hit The Buzz, Jack"
 
 COPY package.json /usr/src/app/
 RUN npm install

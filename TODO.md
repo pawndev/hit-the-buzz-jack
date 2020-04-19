@@ -13,6 +13,7 @@ delete old
 - [ ] refactor the player part (like in the host part)
 - [ ] try to separate all event listener in the backend
 - [x] dockerfile
+- [ ] push image to registry
 - [ ] helm chart
 - [ ] Readme
     - [ ] Usage (installation, with/without docker)

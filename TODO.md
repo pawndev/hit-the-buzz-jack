@@ -6,7 +6,7 @@
 - [x] display current team point for player (miss synchro with event)
 - [x] bug: when change teams, create new user, without
 delete old
-- [ ] remove all old assets
+- [x] remove all old assets
 - [ ] use cdn for uikit
 - [x] remove all old pages
 - [x] clean routes

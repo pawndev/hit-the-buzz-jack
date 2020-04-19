@@ -1,5 +1,7 @@
 # buzzer online with friends !
 
+This project was initially a fork of https://github.com/bufferapp/buzzer
+
 ## mockup
 ![login](./misc/login.jpg)
 ![main_play](./misc/main_player.jpg)

@@ -12,7 +12,7 @@ delete old
 - [x] use cdn for uikit
 - [ ] refactor the player part (like in the host part)
 - [ ] try to separate all event listener in the backend
-- [ ] dockerfile
+- [x] dockerfile
 - [ ] helm chart
 - [ ] Readme
     - [ ] Usage (installation, with/without docker)

@@ -7,13 +7,17 @@
 - [x] bug: when change teams, create new user, without
 delete old
 - [x] remove all old assets
-- [ ] use cdn for uikit
 - [x] remove all old pages
 - [x] clean routes
+- [x] use cdn for uikit
 - [ ] refactor the player part (like in the host part)
 - [ ] try to separate all event listener in the backend
 - [ ] dockerfile
 - [ ] helm chart
+- [ ] Readme
+    - [ ] Usage (installation, with/without docker)
+    - [ ] Docker build/run
+    - [ ] Helm chart
 
 # new interface
 

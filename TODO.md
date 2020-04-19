@@ -12,6 +12,8 @@ delete old
 - [x] clean routes
 - [ ] refactor the player part (like in the host part)
 - [ ] try to separate all event listener in the backend
+- [ ] dockerfile
+- [ ] helm chart
 
 # new interface
 

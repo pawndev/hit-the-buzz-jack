@@ -79,3 +79,8 @@ $ helm install -n buzzer hit-the-buzz-jack .
 ## video
 
 You can find the presentation video here: https://youtu.be/wdHWkQP2u08
+
+## Links
+
+GitHub: https://github.com/pawndev/hit-the-buzz-jack
+Docker Hub: https://hub.docker.com/r/lesspion/hit-the-buzz-jack

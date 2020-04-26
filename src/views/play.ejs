@@ -5,9 +5,12 @@
     <title><%= config.title %></title>
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" href="/css/uikit.min.css">
-    <script src="/js/uikit.min.js"></script>
-    <script src="/js/uikit-icons.min.js"></script>
+    <!-- UIkit CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/uikit@3.4.1/dist/css/uikit.min.css" />
+
+    <!-- UIkit JS -->
+    <script src="https://cdn.jsdelivr.net/npm/uikit@3.4.1/dist/js/uikit.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/uikit@3.4.1/dist/js/uikit-icons.min.js"></script>
     <style>
         h1 { color: #d54d7b; font-family: "Great Vibes", cursive; font-size: 165px; line-height: 160px; font-weight: normal; margin-bottom: 0px; margin-top: 40px; text-align: center; text-shadow: 0 1px 1px #fff; }
         .pointer { cursor: pointer }
@@ -15,33 +18,35 @@
 </head>
 
 <body>
-<div class="uk-container uk-container-center uk-margin-top uk-margin-large-bottom" id="login" hidden>
+<div class="uk-container uk-container-center uk-margin-top uk-margin-large-bottom" id="login">
     <h1 class="uk-article-title uk-text-center"><%= config.title %></h1>
     <hr class="uk-divider-icon">
     <div class="uk-flex" data-uk-grid-margin="">
         <div class="uk-margin uk-width-large uk-margin-auto uk-card uk-card-default uk-card-body uk-box-shadow-large">
             <h3 class="uk-card-title uk-text-center">Let's buzz!</h3>
-            <form>
+            <form id="login_form">
                 <div class="uk-margin">
+                    <input name="id" class="uk-input uk-form-large" placeholder="Your name" type="hidden" />
                     <div class="uk-inline uk-width-1-1">
                         <span class="uk-form-icon" uk-icon="icon: mail"></span>
-                        <input class="uk-input uk-form-large" placeholder="Your name" type="text">
+                        <input name="name" class="uk-input uk-form-large" placeholder="Your name" type="text">
                     </div>
                 </div>
                 <div class="uk-margin">
                     <div class="uk-inline uk-width-1-1">
                         <label>Join a team!</label>
-                        <select class="uk-select">
-                            <option></option>
-                            <option value="AlphaTeam">AlphaTeam</option>
-                            <option value="BetaTeam">BetaTeam</option>
+                        <select name="team" class="uk-select">
+                            <option selected></option>
+                            <% data.teams.forEach(function(team){ %>
+                            <option value="<%= team.name %>"><%= team.name %></option>
+                            <% }); %>
                         </select>
                     </div>
                     <hr class="uk-divider-small uk-text-center">
                     <div class="uk-margin">
                         <div class="uk-inline uk-width-1-1">
                             <label>Or create one!</label>
-                            <input class="uk-input uk-form-large" placeholder="Your team name" type="text">
+                            <input name="create_team" class="uk-input uk-form-large" placeholder="Your team name" type="text">
                         </div>
                     </div>
                 </div>
@@ -52,19 +57,19 @@
         </div>
     </div>
 </div>
-<div class="uk-container uk-container-center uk-margin-top uk-margin-large-bottom">
+<div class="uk-container uk-container-center uk-margin-top uk-margin-large-bottom" id="buzz_interface" hidden>
     <h1 class="uk-article-title uk-text-center"><%= config.title %></h1>
     <hr class="uk-divider-icon">
     <div class="uk-flex" data-uk-grid-margin="">
         <div class="uk-margin uk-width-large uk-margin-auto uk-card uk-card-default uk-card-body uk-box-shadow-large uk-margin-auto" style="padding-bottom: 50px;">
-            <p class="uk-text-center">Einar dans l'équipe "Liszt"</p>
-            <button class="uk-button uk-button-danger uk-button-large uk-width-1-1 uk-border-rounded uk-text-italic uk-text-bolder uk-text-lead uk-height-1-1 ">BUZZ!!!</button>
+            <p id="info_me" class="uk-text-center">Einar dans l'équipe "Liszt"</p>
+            <button id="buzz_button" class="uk-button uk-button-danger uk-button-large uk-width-1-1 uk-border-rounded uk-text-italic uk-text-bolder uk-text-lead uk-height-1-1 ">BUZZ!!!</button>
         </div>
     </div>
-    <div class="uk-flex" data-uk-grid-margin="">
+    <div class="uk-flex" data-uk-grid-margin="" id="score">
         <div class="uk-margin uk-width-large uk-margin-auto uk-card uk-card-default uk-card-body uk-box-shadow-large uk-margin-auto">
             <p class="uk-text-center uk-text-lighter">Classement</p>
-            <table class="uk-table uk-table-divider">
+            <table id="score_list" class="uk-table uk-table-divider">
                 <thead>
                 <tr>
                     <th>Team</th>
@@ -72,24 +77,28 @@
                 </tr>
                 </thead>
                 <tbody>
+                <% data.teams.sort((prev, curr) => curr.point - prev.point).forEach(function(team){ %>
                 <tr>
-                    <td>TeamName1</td>
-                    <td>12</td>
+                    <td><%= team.name %></td>
+                    <td><%= team.point %></td>
                 </tr>
-                <tr>
-                    <td>TeamName2</td>
-                    <td>10</td>
-                </tr>
+                <% }); %>
                 </tbody>
             </table>
         </div>
     </div>
     <div class="uk-flex" data-uk-grid-margin="">
         <div class="uk-margin uk-width-large uk-margin-auto uk-card uk-card-default uk-card-body" style="padding-bottom: 50px;">
-            <button class="uk-button uk-button-primary uk-button-large uk-width-1-1 uk-border-rounded">Change team</button>
+            <button id="change_team" class="uk-button uk-button-primary uk-button-large uk-width-1-1 uk-border-rounded">Change team</button>
         </div>
     </div>
 </div>
+<script src="/socket.io/socket.io.js"></script>
+<script src="/common/event.js"></script>
+<script src="/join/user.js"></script>
+<script src="/join/score.js"></script>
+<script src="/join/store.js"></script>
+<script src="/join/index.js"></script>
 </body>
 
 </html>

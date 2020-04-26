@@ -68,3 +68,4 @@ sa.prod.json
 
 # Visual Studio config files
 .vs/
+values-production.yaml

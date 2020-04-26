@@ -1,9 +1,7 @@
-export const IoEvent = {
-  CONNECTION: 'connection',
+const IoEvent = {
   BUZZ: {
     NEW: 'buzz:new',
     CLEAR: 'buzz:clear',
-    CLEARED: 'buzz:cleared'
   },
   SCORE: {
     INC: 'score:inc',
@@ -14,6 +12,6 @@ export const IoEvent = {
     NEW: 'player:new',
     EXIT: 'player:exit',
     CHANGE: 'player:change',
-    BUZZED: 'player:buzzed',
+    BUZZED: 'player:buzzed'
   }
 }

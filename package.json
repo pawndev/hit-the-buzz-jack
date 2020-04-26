@@ -1,8 +1,8 @@
 {
-  "name": "ms-template",
+  "name": "hit-the-buzz-jack",
   "version": "1.0.0",
-  "description": "",
-  "main": "index.js",
+  "description": "A websocket buzzer app for running your own quizzes or other games",
+  "main": "build/index.js",
   "scripts": {
     "build": "tsc",
     "run": "node build/index.js",

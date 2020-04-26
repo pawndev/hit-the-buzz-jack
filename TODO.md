@@ -15,10 +15,10 @@ delete old
 - [x] dockerfile
 - [x] push image to registry
 - [x] helm chart
-- [ ] Readme
-    - [ ] Usage (installation, with/without docker)
-    - [ ] Docker build/run
-    - [ ] Helm chart
+- [x] Readme
+    - [x] Usage (installation, with/without docker)
+    - [x] Docker build/run
+    - [x] Helm chart
 
 # new interface
 

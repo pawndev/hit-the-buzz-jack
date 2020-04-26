@@ -72,9 +72,9 @@ $ helm install -n buzzer hit-the-buzz-jack .
 ```
 
 ## mockup
-![login](./misc/login.jpg)
-![main_play](./misc/main_player.jpg)
-![host](./misc/host_dashboard.jpg)
+![login](https://raw.githubusercontent.com/pawndev/hit-the-buzz-jack/master/misc/login.jpg)
+![main_play](https://raw.githubusercontent.com/pawndev/hit-the-buzz-jack/master/misc/main_player.jpg)
+![host](https://raw.githubusercontent.com/pawndev/hit-the-buzz-jack/master/misc/host_dashboard.jpg)
 
 ## video
 

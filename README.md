@@ -6,7 +6,7 @@ Thanks a lot to this community!
 
 ## Links
 
-GitHub: https://github.com/pawndev/hit-the-buzz-jack
+GitHub: https://github.com/pawndev/hit-the-buzz-jack <br>
 Docker Hub: https://hub.docker.com/r/lesspion/hit-the-buzz-jack
 
 ## Getting started

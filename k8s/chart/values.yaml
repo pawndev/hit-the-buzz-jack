@@ -5,8 +5,8 @@
 replicaCount: 1
 
 image:
-  repository: pawndev/HitTheBuzzJack
-  tag: latest
+  repository: lesspion/hit-the-buzz-jack
+  tag: 1.0.0
   pullPolicy: IfNotPresent
 
 nameOverride: ""

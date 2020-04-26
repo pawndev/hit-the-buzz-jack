@@ -1,6 +1,7 @@
 # Hit the buzz, Jack
 
 This project was initially a fork of https://github.com/bufferapp/buzzer
+Thanks a lot to this community!
 
 ## Getting started
 

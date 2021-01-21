@@ -38,7 +38,7 @@
     "pino-prettifier": "^1.0.8",
     "pino-pretty": "^3.6.1",
     "point-of-view": "^3.8.0",
-    "socket.io": "^2.3.0",
+    "socket.io": "^2.4.0",
     "typescript": "^3.8.3"
   }
 }
